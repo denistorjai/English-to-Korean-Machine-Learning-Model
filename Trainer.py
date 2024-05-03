@@ -14,4 +14,5 @@ TrainingDataLoader = DataLoader(Training_Dataset, batch_size=64, shuffle=False)
 Testing_Dataset = DatasetClass.EKMLDataset('./Dataset/KoreantoEnglishParallelTestingData.csv', transform=DatasetClass.tokenizer)
 TestingDataLoader = DataLoader(Testing_Dataset, batch_size=64, shuffle=False)
 
-
+# Variables
+TrainingCycles = 1
