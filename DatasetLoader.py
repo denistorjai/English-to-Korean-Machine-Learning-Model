@@ -13,8 +13,8 @@ EnglishTokenizer = get_tokenizer("basic_english")
 KoreanTokenizer = MeCab.Tagger()
 
 # Get Dataset, and split into Korean and English then Tokenize & store tokens
-with open('./Dataset/ParallelData.txt') as Dataset:
-    for LineSentence in Dataset:
+with open('./Dataset/ParallelData.txt', encoding='utf-8') as ParallelDataset:
+    for LineSentence in ParallelDataset:
         Sentence = LineSentence.split('/')
         EnglishTokens.append(EnglishTokenizer(Sentence[1]))
         KoreanTokens.append(KoreanTokenizer.parse(Sentence[0]).split())
@@ -40,6 +40,6 @@ class TokenLoaderDataset(Dataset):
         return self.ModelInput[index], self.ModelOutput[index]
 
 # Initialize and Create Dataloader
-TokenData = TokenLoaderDataset(ModelInput,ModelOutput)
+TokenData = TokenLoaderDataset(EnglishTokens, KoreanTokens)
 batch_size = 32
-TokenLoader = DataLoader(TokenLoaderDataset, batch_size=batch_size, shuffle=True)
+TokenLoader = DataLoader(TokenData, batch_size=batch_size, shuffle=True)
