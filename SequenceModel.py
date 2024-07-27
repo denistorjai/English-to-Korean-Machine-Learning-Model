@@ -5,7 +5,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 import DatasetLoader
 
-# Encoder, Encode English Tokens 
+# Encoder, Encode Tokens 
 class Encoder(nn.Module):
     def __init__(self, ModelInput, EmbeddedSize, HiddenSize, NumberofLayers, DropoutRate):
         super().__init__()
@@ -23,7 +23,7 @@ class Encoder(nn.Module):
         # return encode
         return hidden, cell
     
-# Decode 
+# Decode Tokens
 class Decoder(nn.Module):
     def __init__(self, ModelOutput, EmbeddedSize, HiddenSize, NumberofLayers, DropoutRate):
         super().__init__()
